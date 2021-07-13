@@ -1,26 +1,32 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import GlobalContext from '../../utils/GlobalState';
 import API from '../../utils/API';
-import { Button, Navbar, Columns, Heading, Level, Box } from 'react-bulma-components';
+import { Button, Navbar, Columns, Level, Icon } from 'react-bulma-components';
+import {
+  faCalendarDay,
+  faPlus,
+  faSignInAlt,
+  faSignOutAlt,
+  faUser,
+  faUserPlus,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Nav() {
-
-  const userData = useContext(GlobalContext)
-  // const { logged_in } = useContext(GlobalContext);
-
+  const userData = useContext(GlobalContext);
 
   function handleLogout() {
-      API.logoutUser()
-      .then(res => {
-          if (!res.data.logged_in ){
-          userData.onUpdate(res.data)
-          window.location.replace(`http://localhost:3000/login`)
-          }
+    API.logoutUser()
+      .then((res) => {
+        if (!res.data.logged_in) {
+          userData.onUpdate(res.data);
+          window.location.replace(`http://localhost:3000/login`);
+        }
       })
-      .catch(err => {
-          console.log(err)
-      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -37,49 +43,70 @@ function Nav() {
               />
             </Navbar.Item>
             <Navbar.Container className='navbar-start'>
-
-              {userData.logged_in &&
+              {userData.logged_in && (
                 <>
                   <Button renderAs={Link} color='primary' to='/profile'>
-                    Profile
+                    <Icon>
+                      <FontAwesomeIcon icon={faUser} />
+                    </Icon>
                   </Button>
-                  <Button renderAs={Link} color='link' to='/new'>
-                    Add Event
+                  <Button
+                    className='ml-3'
+                    renderAs={Link}
+                    color='link'
+                    to='/new'
+                  >
+                    <Icon>
+                      <FontAwesomeIcon icon={faPlus} />
+                      <FontAwesomeIcon icon={faCalendarDay} />
+                    </Icon>
                   </Button>
-                </>}
-               
-              
+                </>
+              )}
             </Navbar.Container>
           </Navbar.Brand>
           <Navbar.Container className='navbar-end' align='end'>
-            {userData.logged_in &&
+            {userData.logged_in && (
               <>
-               <Heading as='h3' align='center'>Welcome { userData.username}!</Heading>
-              <Box></Box>
-              <Button renderAs={Link} onClick={handleLogout} color='link' to='/logout'>
-                Logout
-              </Button>
+                <Button
+                  renderAs={Link}
+                  onClick={handleLogout}
+                  color='light'
+                  to='/logout'
+                >
+                  <Icon>
+                    <FontAwesomeIcon alt='Logout' icon={faSignOutAlt} />
+                  </Icon>
+                </Button>
               </>
-            }
-            {!userData.logged_in &&
-            <Level.Item>
-              <Columns>
-                <Columns.Column>
-                  <Button renderAs={Link} color='link' to='/login'>
-                    Login
-                  </Button>
-                </Columns.Column>
-                <div className='divider is-vertical is-light' align='vcentered' color='light'>
-                  OR
-                </div>
-                <Columns.Column>
-                  <Button renderAs={Link} color='link' to='/signup'>
-                    Sign up
-                  </Button>
-                </Columns.Column>
-              </Columns>
+            )}
+            {!userData.logged_in && (
+              <Level.Item>
+                <Columns>
+                  <Columns.Column>
+                    <Button renderAs={Link} color='link' to='/login'>
+                      <Icon>
+                        <FontAwesomeIcon alt='Login' icon={faSignInAlt} />
+                      </Icon>
+                    </Button>
+                  </Columns.Column>
+                  <div
+                    className='divider is-vertical is-light'
+                    align='vcentered'
+                    color='light'
+                  >
+                    OR
+                  </div>
+                  <Columns.Column>
+                    <Button renderAs={Link} color='link' to='/signup'>
+                      <Icon>
+                        <FontAwesomeIcon alt='Signup' icon={faUserPlus} />
+                      </Icon>
+                    </Button>
+                  </Columns.Column>
+                </Columns>
               </Level.Item>
-            }
+            )}
           </Navbar.Container>
         </Navbar>
       </header>

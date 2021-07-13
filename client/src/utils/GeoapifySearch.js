@@ -38,9 +38,8 @@ function GeoapifySearch(props) {
         return filtered;
       }
     
-      return <GeoapifyContext apiKey={'8220c7bc37d549848ae86fd9d8324474'}>
-    {/* process.env.GEO_API_KEY */}
-          <GeoapifyGeocoderAutocomplete
+      return <GeoapifyContext apiKey={process.env.GEO_API_KEY}>
+            <GeoapifyGeocoderAutocomplete
             placeSelect={onPlaceSelect}
             suggestionsChange={onSuggestionChange}
           />

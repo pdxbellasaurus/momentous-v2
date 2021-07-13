@@ -47,8 +47,9 @@ export default function CreateEvent() {
     <Container 
     backgroundColor='link'
            >
-             <Box
-              backgroundColor='link'> </Box>
+            <Block
+              backgroundColor='link'
+              style={{ margin: '1rem' }}> </Block>
       
       <Box style={{ width: 750, margin: 'auto' }}>
 

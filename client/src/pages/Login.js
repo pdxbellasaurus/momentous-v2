@@ -42,8 +42,9 @@ function Login() {
         <Container 
         backgroundColor='link'
                >
-                 <Box
-              backgroundColor='link'> </Box>
+                 <Block
+              backgroundColor='link'
+              style={{ margin: '1rem' }}> </Block>
           
           <Box style={{ width: 400, margin: 'auto' }}>
             <Heading style={{ margin: '1rem' }} subtitle size={3}>

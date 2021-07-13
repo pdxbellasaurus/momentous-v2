@@ -1,28 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Card, Media, Heading, Content } from 'react-bulma-components';
+import { Container, Card, Media, Heading, Content, Tile } from 'react-bulma-components';
 
 export function List({ children }) {
   return (
-    <Container>
+    <Container className='columns is-multiline' >
            {children}
     </Container>
   );
 }
 
 export function Event({
-
 index,
   title,
   description,
   id,
 // owner,
-
+// firstName,
+// lastName
 }
 ) {
-      
-             return(        
-              <Card style={{ width: 300, margin: 'auto' }} key={index}>
+                   return(  
+               <Tile >      
+              <Card  className='is-one-third'  style={{ margin: 'auto' }} key={index}>
         <Card.Content>
       <Media>
             <Media.Item>
@@ -39,10 +39,10 @@ index,
       {description}
                <br />
         </Content>
-
       <a href="/">RSVP</a>
 
     </Card.Content>
   </Card>
+  </Tile>
   )
 }

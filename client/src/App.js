@@ -4,12 +4,13 @@ import GlobalContext from './utils/GlobalState';
 import { Container } from 'react-bulma-components';
 // import About from './pages/About';
 // import EventList from './pages/EventList';
-// import Profile from './pages/Profile';
-import Nav from './components/Nav/index';
+import Profile from './pages/Profile';
+import Nav from './components/Nav';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateEvent from './pages/NewEvent';
+import RSVP from './pages/RSVP';
 // import { Footer } from './components/Footer';
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
             <Route exact path="/login" component={Login}/>
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/new" component={CreateEvent}/>
+            <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/events/:id" component={RSVP} />
           </Switch>
    
       </Container>

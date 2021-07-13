@@ -1,45 +1,94 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import GlobalContext from '../utils/GlobalState';
+import API from '../utils/API';
+import {
+  Box,
+  Container,
+  Button,
+  Media,
+  Heading,
+  Content,
+  Columns,
+} from 'react-bulma-components';
 
+export default function Profile() {
+  const { username, email, id } = useContext(GlobalContext);
+  const [events, setEvents] = useState([]);
+  const [filteredEvents, setFiltered] = useState(events);
 
+  useEffect(() => {
+    loadEvents();
+  },[]);
 
+  function loadEvents() {
+    API.getEvents()
+      .then((res) => {
+        console.log(res.data);
 
-// <section class="container mt-5">
-//     <div class="columns">
-//         <div class="column is-4">
-//             <aside class="menu">
-//                 <ul class="list">
-//                     <li class="subtitle is-3">Welcome <strong>{user.name}</strong></li>
-//                     <li class="box">
-//                         {user.email}
-//                     </li>
-//                 </ul>
-//             </aside>
-//             <a class="button is-link is-block is-alt is-medium" href="/newevent">New Event</a>
-//         </div>
-//         <div class="column is-9">
-//             <div class="box content">
-               
-//                 <h3 class="has-text-link">Events:</h3>
+        setEvents(res.data);
+        const filteredEvents = res.data.filter(
+          (event) => event.owner[0]._id === id
+        );
 
+        setFiltered(filteredEvents);
+      })
+      .catch((err) => console.log(err));
+  }
 
+  return (
+    <Container className='mt-5'>
+      <Columns className='is-multiline'>
+        <Columns.Column className='left' size={4} offset={true}>
+          <aside className='menu'>
+            <ul className='list'>
+              <li className='subtitle is-3'>
+                Welcome <strong>{username}</strong>
+              </li>
+              <li className='box'>{email}</li>
+            </ul>
+          </aside>
+          <Button
+            renderAs={Link}
+            color='link'
+            to='/new'
+            className='is-link is-block is-alt is-medium'
+          >
+            Add Event
+          </Button>
+        </Columns.Column>
 
-//                 {{#each user.events as |event|}}
-//                 <article class="">
-//                     <a href="/event/{{event.unique_id}}">
-//                         <h4>{{event.title}}</h4>
-//                     </a>
-//                     <div class="media">
-//                         <div class="media-content">
-//                             <div class="content">
-//                                 <p>
-//                                     {{event.description}}
-//                                 </p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </article>
-//                 {{/each}}
-               
-//             </div>
-//         </div>
-//     </div>
-// </section>
+        <Columns.Column size={8}>
+          <Box className='content mt-4'>
+            <Heading className='h4'>Events:</Heading>
+
+            {filteredEvents.length ? (
+              filteredEvents.map((event, index) => {
+                return (
+                  <article key={index}>
+                    <Heading
+                      renderAs={Link}
+                      color='link'
+                      to={'/events/' + event._id}
+                    >
+                      {event.title}
+                    </Heading>
+                    <Media>
+                      <div className='media-content'>
+                        <Content>
+                          <p>{event.description}</p>
+                        </Content>
+                      </div>
+                    </Media>
+                  </article>
+                );
+              })
+            ) : (
+              <p>No events yet!</p>
+            )}
+          </Box>
+        </Columns.Column>
+      </Columns>
+    </Container>
+  );
+}

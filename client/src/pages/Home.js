@@ -26,7 +26,7 @@ export default function Home() {
 
 <Container>
 {events.length ? (
-<List>
+<List className='is-multiline'>
 
 {events.map((event, index) => (
     <Event
