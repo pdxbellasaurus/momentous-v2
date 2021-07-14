@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import GlobalContext from '../../utils/GlobalState';
 import API from '../../utils/API';
-import { Button, Navbar, Columns, Level, Icon } from 'react-bulma-components';
+import { Button, Navbar, Columns, Icon } from 'react-bulma-components';
 import {
   faCalendarDay,
   faPlus,
@@ -65,8 +65,8 @@ function Nav() {
                 </>
               )}
             </Navbar.Container>
-          </Navbar.Brand>
-          <Navbar.Container className='navbar-end' align='end'>
+        
+          <Navbar.Container className='navbar-end' >
             {userData.logged_in && (
               <>
                 <Button
@@ -74,6 +74,7 @@ function Nav() {
                   onClick={handleLogout}
                   color='light'
                   to='/logout'
+                  style={{ marginLeft: '4rem'}}
                 >
                   <Icon>
                     <FontAwesomeIcon alt='Logout' icon={faSignOutAlt} />
@@ -82,8 +83,8 @@ function Nav() {
               </>
             )}
             {!userData.logged_in && (
-              <Level.Item>
-                <Columns>
+            
+                <Columns  style={{ marginLeft: '4rem', display: 'inline-flex', alignContent: 'end', alignItems: 'center' }}>
                   <Columns.Column>
                     <Button renderAs={Link} color='link' to='/login'>
                       <Icon>
@@ -92,8 +93,9 @@ function Nav() {
                     </Button>
                   </Columns.Column>
                   <div
+                  
                     className='divider is-vertical is-light'
-                    align='vcentered'
+                   
                     color='light'
                   >
                     OR
@@ -106,9 +108,10 @@ function Nav() {
                     </Button>
                   </Columns.Column>
                 </Columns>
-              </Level.Item>
+              
             )}
           </Navbar.Container>
+          </Navbar.Brand>
         </Navbar>
       </header>
     </GlobalContext.Provider>

@@ -52,9 +52,9 @@ function Signup() {
       });
   }
   return (
-    <Container backgroundColor='link'>
-      <Box backgroundColor='link'> </Box>
-      <Box style={{ width: 700, margin: 'auto' }}>
+    <Container style={{backgroundColor:'#1A237E'}} >
+    
+      <Box  style={{ borderColor: '#1A237E', borderWidth: '2', borderStyle: 'solid',  width: 700, margin: 'auto' }}>
         <Heading style={{ margin: '1rem' }} subtitle size={3}>
           Signup
         </Heading>
@@ -93,7 +93,6 @@ function Signup() {
             <Form.Label>Username</Form.Label>
             <Form.Control>
               <Form.Input
-                color='success'
                 onChange={handleInputChange}
                 type='text'
                 placeholder='Username'
@@ -106,14 +105,12 @@ function Signup() {
                 <FontAwesomeIcon icon={faCheck} />
               </Icon>
             </Form.Control>
-            <Form.Help color='success'>This username is available</Form.Help>
-          </Form.Field>
+           </Form.Field>
 
           <Form.Field>
             <Form.Label>Email Address</Form.Label>
             <Form.Control>
               <Form.Input
-                color='danger'
                 onChange={handleInputChange}
                 type='email'
                 placeholder='Email'
@@ -126,8 +123,7 @@ function Signup() {
                 <FontAwesomeIcon icon={faExclamationTriangle} />
               </Icon>
             </Form.Control>
-            <Form.Help color='danger'>This email is invalid</Form.Help>
-          </Form.Field>
+            </Form.Field>
 
           <Form.Field>
             <Form.Label>Password</Form.Label>

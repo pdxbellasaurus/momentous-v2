@@ -25,7 +25,8 @@ export default function Home() {
     <>
       <Landing />
 
-      <Container>
+      <Container
+      color='light' style={{backgroundColor:"#F4B400"}}>
         {events.length ? (
           <List className='is-multiline'>
             {events.map((event, index) => (

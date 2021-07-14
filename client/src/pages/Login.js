@@ -38,12 +38,8 @@ function Login() {
     });
   }
   return (
-    <Container backgroundColor='link'>
-      <Block backgroundColor='link' style={{ margin: '1rem' }}>
-        {' '}
-      </Block>
-
-      <Box style={{ width: 400, margin: 'auto' }}>
+    <Container style={{ backgroundColor: '#1A237E'}}>    
+      <Box style={{ borderColor: '#1A237E', borderWidth: '2', borderStyle: 'solid',  width: 400, margin: 'auto' }}>
         <Heading style={{ margin: '1rem' }} subtitle size={3}>
           Login
         </Heading>
@@ -91,10 +87,11 @@ function Login() {
               </Icon>
             </Form.Control>
           </Form.Field>
-        </form>
-        <Button color='primary' type='submit' onClick={handleFormSubmit}>
+       
+        <Button color='success' type='submit' onClick={handleFormSubmit}>
           Submit
         </Button>
+        </form>
       </Box>
     </Container>
   );

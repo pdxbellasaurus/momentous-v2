@@ -1,7 +1,7 @@
 import React from 'react';
 import {Footer, Container, Content } from 'react-bulma-components';
 
-export function Foot() {
+export default function Foot() {
   return (
     <>
       <Footer>

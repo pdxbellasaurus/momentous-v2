@@ -37,7 +37,7 @@ export default function Profile() {
   }
 
   return (
-    <Container className='mt-5'>
+    <Container className='mt-5' color='light' style={{backgroundColor:"#F4B400"}}>
       <Columns className='is-multiline'>
         <Columns.Column className='left' size={4} offset={true}>
           <aside className='menu'>

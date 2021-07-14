@@ -52,12 +52,8 @@ export default function CreateEvent() {
   }
 
   return (
-    <Container backgroundColor='link'>
-      <Block backgroundColor='link' style={{ margin: '1rem' }}>
-        {' '}
-      </Block>
-
-      <Box style={{ width: 750, margin: 'auto' }}>
+    <Container style={{backgroundColor:'#1A237E'}}  >
+           <Box style={{ borderColor: '#1A237E', borderWidth: '2', borderStyle: 'solid',  width: 750, margin: 'auto' }}>
         <Block>
           <Image
             style={{ margin: 'auto' }}

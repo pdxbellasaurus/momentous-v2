@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import GlobalContext from './utils/GlobalState';
 import { Container } from 'react-bulma-components';
-// import About from './pages/About';
-// import EventList from './pages/EventList';
 import Profile from './pages/Profile';
 import Nav from './components/Nav';
 import Home from './pages/Home';
@@ -11,8 +9,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateEvent from './pages/NewEvent';
 import RSVP from './pages/RSVP';
-import { Foot } from './components/Footer';
-// import { Footer } from './components/Footer';
+import Foot from './components/Footer';
 
 function App() {
 

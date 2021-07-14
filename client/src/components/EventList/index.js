@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Container,
+  Columns,
   Card,
   Media,
   Heading,
-  Content,
-  Tile,
+  Content, Column
 } from 'react-bulma-components';
 
 export function List({ children }) {
-  return <Container className='columns is-multiline'>{children}</Container>;
+  return <Columns  >{children}</Columns>;
 }
 
 export function Event({ index, title, description, id }) {
   return (
-    <Tile>
-      <Card className='is-one-third' style={{ margin: 'auto' }} key={index}>
+    <Columns.Column
+        size={3}>
+      <Card key={index}>
         <Card.Content>
           <Media>
             <Media.Item>
@@ -36,6 +36,6 @@ export function Event({ index, title, description, id }) {
           <Link to={'/events/' + id}>RSVP</Link>
         </Card.Content>
       </Card>
-    </Tile>
+    </Columns.Column>
   );
 }

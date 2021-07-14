@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, Container, Heading, Block, Image } from "react-bulma-components";
+import { Hero, Container, Heading, Block, Image, Box } from "react-bulma-components";
 
  export default function Landing() {
 
@@ -32,7 +32,14 @@ import { Hero, Container, Heading, Block, Image } from "react-bulma-components";
         </Container>
     </Hero.Body>
     <Hero.Footer >
-     vv Join events arrow down vv
+    <Box color='light' style={{backgroundColor:"#F4B400"}}>
+    <Heading
+          size={3}
+          subtitle
+         
+        > EVENTS
+      </Heading>
+      </Box> 
     </Hero.Footer>
 
     </Hero>
