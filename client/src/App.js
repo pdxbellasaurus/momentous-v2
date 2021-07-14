@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreateEvent from './pages/NewEvent';
 import RSVP from './pages/RSVP';
+import { Foot } from './components/Footer';
 // import { Footer } from './components/Footer';
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
             <Route exact path="/profile" component={Profile}/>
             <Route exact path="/events/:id" component={RSVP} />
           </Switch>
-   
+   <Foot/> 
       </Container>
     </Router>
     </GlobalContext.Provider>

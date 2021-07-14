@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import GlobalContext from '../../utils/GlobalState';
 import API from '../../utils/API';
 import { Button, Navbar, Columns, Level, Icon } from 'react-bulma-components';
@@ -15,13 +15,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Nav() {
   const userData = useContext(GlobalContext);
+  const history = useHistory()
 
   function handleLogout() {
     API.logoutUser()
       .then((res) => {
         if (!res.data.logged_in) {
           userData.onUpdate(res.data);
-          window.location.replace(`http://localhost:3000/login`);
+          history.push('/login');
         }
       })
       .catch((err) => {

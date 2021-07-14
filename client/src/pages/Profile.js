@@ -19,7 +19,7 @@ export default function Profile() {
 
   useEffect(() => {
     loadEvents();
-  },[]);
+  }, []);
 
   function loadEvents() {
     API.getEvents()
