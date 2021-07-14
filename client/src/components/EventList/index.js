@@ -5,7 +5,7 @@ import {
   Card,
   Media,
   Heading,
-  Content, Column
+  Content
 } from 'react-bulma-components';
 
 export function List({ children }) {
@@ -22,11 +22,7 @@ export function Event({ index, title, description, id }) {
             <Media.Item>
               <Heading size={4}>
                 <Link to={'/events/' + id}>{title}</Link>
-              </Heading>
-              <Heading subtitle size={6}>
-                Hosted by:
-                {/* {owner.firstName} {owner.LastName} */}
-              </Heading>
+              </Heading>             
             </Media.Item>
           </Media>
           <Content>
